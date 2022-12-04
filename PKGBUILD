@@ -241,6 +241,7 @@ pkgver() {
 # Doing so, breaks incremental compilation.
 prepare() {
   cd "$srcdir/emacs-git"
+  git apply "$srcdir/../0002-Center-lines-vertically-with-line-spacing-vertical-c.patch"
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
   mkdir -p "$srcdir/emacs-git/build"
 }
