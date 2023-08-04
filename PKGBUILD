@@ -93,7 +93,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=30.0.50.162754
+pkgver=29.0.92.165422
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -241,6 +241,7 @@ pkgver() {
 # Doing so, breaks incremental compilation.
 prepare() {
   cd "$srcdir/emacs-git"
+  git checkout emacs-29
   git apply "$srcdir/../0002-Center-lines-vertically-with-line-spacing-vertical-c.patch"
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
   mkdir -p "$srcdir/emacs-git/build"
